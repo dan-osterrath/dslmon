@@ -1,0 +1,35 @@
+name: Build release
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+    branches:
+      - master
+
+jobs:
+  build:
+    name: Build release
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v3
+      - name: Set up JDK
+        uses: actions/setup-java@v3
+        with:
+          java-version: "17"
+          cache: "maven"
+      - name: Build
+        run: ./mvnw clean compile
+      - name: Test
+        run: ./mvnw test
+      - name: Verify
+        run: ./mvnw verify
+      - name: Check style
+        run: ./mvnw checkstyle:check
+      - name: Check for updates
+        run: ./mvnw versions:display-property-updates
+      - name: Package
+        run: ./mvnw package -DskipTests
