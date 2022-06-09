@@ -418,9 +418,21 @@
             </goals>
             <configuration>
               <sources>
-                <source>src/main/resources/xsd/tr64_device_1_0.xsd</source>
+                <source>src/main/resources/xsd/tr64/device_1_0.xsd</source>
               </sources>
-              <packageName>net.packsam.dslmon.device.jaxb.tr64</packageName>
+              <packageName>net.packsam.dslmon.device.jaxb.tr64.device</packageName>
+            </configuration>
+          </execution>
+          <execution>
+            <id>generate-tr64-service</id>
+            <goals>
+              <goal>xjc</goal>
+            </goals>
+            <configuration>
+              <sources>
+                <source>src/main/resources/xsd/tr64/service_1_0.xsd</source>
+              </sources>
+              <packageName>net.packsam.dslmon.device.jaxb.tr64.service</packageName>
             </configuration>
           </execution>
           <execution>
@@ -430,9 +442,21 @@
             </goals>
             <configuration>
               <sources>
-                <source>src/main/resources/xsd/igd_device_1_0.xsd</source>
+                <source>src/main/resources/xsd/igd/device_1_0.xsd</source>
               </sources>
-              <packageName>net.packsam.dslmon.device.jaxb.igd</packageName>
+              <packageName>net.packsam.dslmon.device.jaxb.igd.device</packageName>
+            </configuration>
+          </execution>
+          <execution>
+            <id>generate-igd-service</id>
+            <goals>
+              <goal>xjc</goal>
+            </goals>
+            <configuration>
+              <sources>
+                <source>src/main/resources/xsd/igd/service_1_0.xsd</source>
+              </sources>
+              <packageName>net.packsam.dslmon.device.jaxb.igd.service</packageName>
             </configuration>
           </execution>
         </executions>
