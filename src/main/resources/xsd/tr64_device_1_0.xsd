@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xs:schema
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns="urn:dslforum-org:device-1-0"
+  targetNamespace="urn:dslforum-org:device-1-0"
+  elementFormDefault="qualified"
+>
+
+  <xs:element name="root">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:restriction base="xs:anyType">
+          <xs:sequence>
+            <xs:element name="specVersion" type="specVersion"/>
+            <xs:element name="systemVersion" type="systemVersion"/>
+            <xs:element name="device" type="device"/>
+          </xs:sequence>
+        </xs:restriction>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:complexType name="specVersion">
+    <xs:complexContent>
+      <xs:restriction base="xs:anyType">
+        <xs:sequence>
+          <xs:element name="major" type="xs:byte"/>
+          <xs:element name="minor" type="xs:byte"/>
+        </xs:sequence>
+      </xs:restriction>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="systemVersion">
+    <xs:complexContent>
+      <xs:restriction base="xs:anyType">
+        <xs:sequence>
+          <xs:element name="HW" type="xs:integer"/>
+          <xs:element name="Major" type="xs:byte"/>
+          <xs:element name="Minor" type="xs:byte"/>
+          <xs:element name="Patch" type="xs:byte"/>
+          <xs:element name="Buildnumber" type="xs:long"/>
+          <xs:element name="Display" type="xs:string"/>
+        </xs:sequence>
+      </xs:restriction>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="device">
+    <xs:complexContent>
+      <xs:restriction base="xs:anyType">
+        <xs:sequence>
+          <xs:element name="deviceType" type="xs:string"/>
+          <xs:element name="friendlyName" type="xs:string"/>
+          <xs:element name="manufacturer" type="xs:string"/>
+          <xs:element name="manufacturerURL" type="xs:anyURI"/>
+          <xs:element name="modelDescription" type="xs:string"/>
+          <xs:element name="modelName" type="xs:string"/>
+          <xs:element name="modelNumber" type="xs:string"/>
+          <xs:element name="modelURL" type="xs:anyURI"/>
+          <xs:element name="UDN" type="xs:string"/>
+          <xs:element name="UPC" type="xs:string" minOccurs="0"/>
+          <xs:element name="iconList" type="iconList" minOccurs="0"/>
+          <xs:element name="serviceList" type="serviceList"/>
+          <xs:element name="deviceList" type="deviceList" minOccurs="0"/>
+          <xs:element name="presentationURL" type="xs:anyURI" minOccurs="0"/>
+        </xs:sequence>
+      </xs:restriction>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="iconList">
+    <xs:complexContent>
+      <xs:restriction base="xs:anyType">
+        <xs:sequence>
+          <xs:element name="icon" type="icon"/>
+        </xs:sequence>
+      </xs:restriction>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="icon">
+    <xs:complexContent>
+      <xs:restriction base="xs:anyType">
+        <xs:sequence>
+          <xs:element name="mimetype" type="xs:string"/>
+          <xs:element name="width" type="xs:byte"/>
+          <xs:element name="height" type="xs:byte"/>
+          <xs:element name="depth" type="xs:byte"/>
+          <xs:element name="url" type="xs:string"/>
+        </xs:sequence>
+      </xs:restriction>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="serviceList">
+    <xs:complexContent>
+      <xs:restriction base="xs:anyType">
+        <xs:sequence>
+          <xs:element name="service" type="service" maxOccurs="unbounded" minOccurs="0"/>
+        </xs:sequence>
+      </xs:restriction>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="service">
+    <xs:complexContent>
+      <xs:restriction base="xs:anyType">
+        <xs:sequence>
+          <xs:element name="serviceType" type="xs:string"/>
+          <xs:element name="serviceId" type="xs:string"/>
+          <xs:element name="controlURL" type="xs:string"/>
+          <xs:element name="eventSubURL" type="xs:string"/>
+          <xs:element name="SCPDURL" type="xs:string"/>
+        </xs:sequence>
+      </xs:restriction>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="deviceList">
+    <xs:complexContent>
+      <xs:restriction base="xs:anyType">
+        <xs:sequence>
+          <xs:element name="device" type="device" maxOccurs="unbounded" minOccurs="0"/>
+        </xs:sequence>
+      </xs:restriction>
+    </xs:complexContent>
+  </xs:complexType>
+
+</xs:schema>
