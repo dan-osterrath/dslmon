@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <xs:schema
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
-  xmlns="urn:dslforum-org:device-1-0"
-  targetNamespace="urn:dslforum-org:device-1-0"
+  xmlns="urn:schemas-upnp-org:device-1-0"
+  targetNamespace="urn:schemas-upnp-org:device-1-0"
   elementFormDefault="qualified"
 >
 
@@ -12,7 +12,6 @@
         <xs:restriction base="xs:anyType">
           <xs:sequence>
             <xs:element name="specVersion" type="specVersion"/>
-            <xs:element name="systemVersion" type="systemVersion" minOccurs="0"/>
             <xs:element name="device" type="device"/>
           </xs:sequence>
         </xs:restriction>
@@ -26,21 +25,6 @@
         <xs:sequence>
           <xs:element name="major" type="xs:unsignedByte"/>
           <xs:element name="minor" type="xs:unsignedByte"/>
-        </xs:sequence>
-      </xs:restriction>
-    </xs:complexContent>
-  </xs:complexType>
-
-  <xs:complexType name="systemVersion">
-    <xs:complexContent>
-      <xs:restriction base="xs:anyType">
-        <xs:sequence>
-          <xs:element name="HW" type="xs:unsignedInt"/>
-          <xs:element name="Major" type="xs:unsignedByte"/>
-          <xs:element name="Minor" type="xs:unsignedByte"/>
-          <xs:element name="Patch" type="xs:unsignedByte"/>
-          <xs:element name="Buildnumber" type="xs:unsignedInt"/>
-          <xs:element name="Display" type="xs:string"/>
         </xs:sequence>
       </xs:restriction>
     </xs:complexContent>

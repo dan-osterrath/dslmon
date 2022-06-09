@@ -1,10 +1,9 @@
-package net.packsam.dslmon.tr64;
+package net.packsam.dslmon.device;
 
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
 import lombok.RequiredArgsConstructor;
-import net.packsam.dslmon.tr64.jaxb.device.Device;
-import net.packsam.dslmon.tr64.jaxb.device.Root;
+import net.packsam.dslmon.device.jaxb.tr64.Root;
 import org.apache.hc.client5.http.fluent.Request;
 import org.xml.sax.SAXException;
 
@@ -19,21 +18,29 @@ public class DeviceConnection {
 
     private final int port;
 
-    public Device readDeviceSpec() throws IOException {
+    public Root readTR64DeviceSpec() throws IOException {
+        return readDeviceSpec("/tr64desc.xml", "/xsd/tr64_device_1_0.xsd", Root.class);
+    }
+
+    public net.packsam.dslmon.device.jaxb.igd.Root readIGDDeviceSpec() throws IOException {
+        return readDeviceSpec("/igddesc.xml", "/xsd/igd_device_1_0.xsd", net.packsam.dslmon.device.jaxb.igd.Root.class);
+    }
+
+    private <R> R readDeviceSpec(String specPath, String schemaPath, Class<R> rootClass) throws IOException {
         @SuppressWarnings("HttpUrlsUsage")
-        var url = String.format("http://%s:%d/tr64desc.xml", hostname, port);
+        var url = String.format("http://%s:%d%s", hostname, port, specPath);
         var content = Request.get(url).execute().returnContent();
         try (var is = content.asStream()) {
-            var jaxbContext = JAXBContext.newInstance(Root.class);
+            var jaxbContext = JAXBContext.newInstance(rootClass);
             var unmarshaller = jaxbContext.createUnmarshaller();
 
             var schemaFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
-            var schemaUrl = getClass().getResource("/xsd/tr64_device_1_0.xsd");
+            var schemaUrl = getClass().getResource(schemaPath);
             var schema = schemaFactory.newSchema(schemaUrl);
             unmarshaller.setSchema(schema);
 
-            var root = (Root) unmarshaller.unmarshal(is);
-            return root.getDevice();
+            //noinspection unchecked
+            return (R) unmarshaller.unmarshal(is);
         } catch (JAXBException e) {
             throw new IOException(e);
         } catch (SAXException e) {
