@@ -5,7 +5,7 @@ Java tool for monitoring the DSL connection of a Fritz!Box.
 ## Prerequisites
 
 * Java >= 17
-* Maven >= 3.8.4
+* Maven >= 3.8.5
 
 ## Maven commands
 

@@ -24,7 +24,7 @@
     <junit-jupiter.version>5.8.2</junit-jupiter.version>
 
     <!-- plugin versions -->
-    <maven.version>3.8.4</maven.version>
+    <maven.version>3.8.5</maven.version>
     <checkstyle.version>10.3</checkstyle.version>
     <jacoco-plugin.version>0.8.8</jacoco-plugin.version>
     <dependency-check-maven.version>7.0.4</dependency-check-maven.version>
