@@ -7,6 +7,7 @@ import net.packsam.dslmon.device.jaxb.tr64.service.Action;
 import net.packsam.dslmon.device.jaxb.tr64.service.Argument;
 import net.packsam.dslmon.device.jaxb.tr64.service.ArgumentList;
 import net.packsam.dslmon.device.jaxb.tr64.service.Direction;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -80,6 +81,7 @@ public class TR64ClientTest {
 	}
 
 	@Test
+	@Disabled("has to be wiremocked")
 	public void testCallAction() throws IOException {
 		var tr64Client = new TR64Client("fritz.box", 49000);
 
