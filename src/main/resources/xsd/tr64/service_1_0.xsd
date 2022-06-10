@@ -77,13 +77,13 @@
     <xs:complexContent>
       <xs:restriction base="xs:anyType">
         <xs:choice maxOccurs="unbounded" minOccurs="0">
-          <xs:element name="stateVariable" type="stateVariableType"/>
+          <xs:element name="stateVariable" type="stateVariable"/>
         </xs:choice>
       </xs:restriction>
     </xs:complexContent>
   </xs:complexType>
 
-  <xs:complexType name="stateVariableType">
+  <xs:complexType name="stateVariable">
     <xs:complexContent>
       <xs:restriction base="xs:anyType">
         <xs:sequence>
