@@ -34,34 +34,34 @@
     <xs:complexContent>
       <xs:restriction base="xs:anyType">
         <xs:sequence>
-          <xs:element name="action" type="actionType" maxOccurs="unbounded" minOccurs="0"/>
+          <xs:element name="action" type="action" maxOccurs="unbounded" minOccurs="0"/>
         </xs:sequence>
       </xs:restriction>
     </xs:complexContent>
   </xs:complexType>
 
-  <xs:complexType name="actionType">
+  <xs:complexType name="action">
     <xs:complexContent>
       <xs:restriction base="xs:anyType">
         <xs:sequence>
           <xs:element name="name" type="xs:string"/>
-          <xs:element name="argumentList" type="argumentListType" minOccurs="0"/>
+          <xs:element name="argumentList" type="argumentList" minOccurs="0"/>
         </xs:sequence>
       </xs:restriction>
     </xs:complexContent>
   </xs:complexType>
 
-  <xs:complexType name="argumentListType">
+  <xs:complexType name="argumentList">
     <xs:complexContent>
       <xs:restriction base="xs:anyType">
         <xs:sequence>
-          <xs:element name="argument" type="argumentType" maxOccurs="unbounded" minOccurs="0"/>
+          <xs:element name="argument" type="argument" maxOccurs="unbounded" minOccurs="0"/>
         </xs:sequence>
       </xs:restriction>
     </xs:complexContent>
   </xs:complexType>
 
-  <xs:complexType name="argumentType">
+  <xs:complexType name="argument">
     <xs:complexContent>
       <xs:restriction base="xs:anyType">
         <xs:sequence>
